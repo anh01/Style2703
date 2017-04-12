@@ -5,7 +5,11 @@ StatusBar.setHidden(true);
 
 class App extends Component {
     render() {
-        const { wrapper, footer, header, body, titleStyle, iconStyle, profileStyle, imageHolder, imageContainer } = styles;
+        const { 
+            wrapper, footer, header, body, 
+            titleStyle, iconStyle, profileStyle, 
+            imageContainer, sectionTitle, friendProfileStyle 
+        } = styles;
         return (
             <View style={wrapper}>
                 <View style={header}>
@@ -17,7 +21,7 @@ class App extends Component {
                     <Image source={require('../media/profile.png')} style={profileStyle} />
                     <Text style={{ fontSize: 20, color: '#fff' }}>Teacher</Text>
                     <Text style={{ fontSize: 20, color: '#235857' }}>Saigon, Vietnam</Text>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignSelf: 'stretch' }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignSelf: 'stretch', paddingHorizontal: 40 }}>
                         <View style={imageContainer}>
                             <Image source={require('../media/phone.png')} style={iconStyle} />
                         </View>
@@ -32,7 +36,28 @@ class App extends Component {
                         </View>
                     </View>
                 </View>
-                <View style={footer}></View>
+                <View style={footer}>
+                    <View style={{ flex: 5 }}>
+                        <Text style={[sectionTitle, { marginBottom: 20 }]}>About me</Text>
+                        <Text style={{ lineHeight: 30 }} numberOfLines={3} >Welcome to React Native! This page will help you install React Native on your system, so that you can build apps with it right away. If you already have React Native installed</Text>
+                    </View>
+                    <View style={{ flex: 3 }}>
+                        <Text style={sectionTitle}>Common friends</Text>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Image source={require('../media/p1.jpg')} style={friendProfileStyle} />
+                            <Image source={require('../media/p2.jpg')} style={friendProfileStyle}/>
+                            <Image source={require('../media/p3.jpg')} style={friendProfileStyle}/>
+                            <Image source={require('../media/p4.jpg')} style={friendProfileStyle}/>
+                            <Image source={require('../media/p5.jpg')} style={friendProfileStyle}/>
+                            <Image source={require('../media/p1.jpg')} style={friendProfileStyle} />
+                            <Image source={require('../media/p2.jpg')} style={friendProfileStyle}/>
+                        </View>
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        <Text style={sectionTitle}>Hobbies</Text>
+                        <View></View>
+                    </View>
+                </View>
             </View>
         );
     }
@@ -51,21 +76,20 @@ const styles = StyleSheet.create({
         padding: 20
     },
     body: {
-        flex: 4,
+        flex: 7,
         backgroundColor: '#2DB389',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'space-around'
     },
     footer: {
-        flex: 4,
-        backgroundColor: '#FEFFFF'
+        flex: 7,
+        backgroundColor: '#FEFFFF',
+        padding: 10
     },
     titleStyle: {
         color: 'white',
         fontFamily: 'Avenir',
-        fontSize: 25
-    },
-    imageHolder: {
-
+        fontSize: 25,
     },
     iconStyle: {
         width: 30,
@@ -83,6 +107,13 @@ const styles = StyleSheet.create({
         borderRadius: 25, 
         justifyContent: 'center', 
         alignItems: 'center' 
+    },
+    sectionTitle: {
+        color: 'black',
+        fontWeight: 'bold'
+    },
+    friendProfileStyle: {
+        height: 40, width: 40, marginRight: 10
     }
 });
 
