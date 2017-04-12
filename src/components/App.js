@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, Image, StyleSheet, StatusBar, Dimensions } from 'react-native';
 
 StatusBar.setHidden(true);
+
+const { width, height } = Dimensions.get('window');
 
 class App extends Component {
     render() {
@@ -41,7 +43,7 @@ class App extends Component {
                         <Text style={[sectionTitle, { marginBottom: 20 }]}>About me</Text>
                         <Text style={{ lineHeight: 30 }} numberOfLines={3} >Welcome to React Native! This page will help you install React Native on your system, so that you can build apps with it right away. If you already have React Native installed</Text>
                     </View>
-                    <View style={{ flex: 3 }}>
+                    <View style={{ flex: 3, justifyContent: 'space-around' }}>
                         <Text style={sectionTitle}>Common friends</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Image source={require('../media/p1.jpg')} style={friendProfileStyle} />
@@ -53,9 +55,13 @@ class App extends Component {
                             <Image source={require('../media/p2.jpg')} style={friendProfileStyle}/>
                         </View>
                     </View>
-                    <View style={{ flex: 2 }}>
+                    <View style={{ flex: 2, justifyContent: 'space-between' }}>
                         <Text style={sectionTitle}>Hobbies</Text>
-                        <View></View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Text style={{ padding: 10, backgroundColor: '#D0D0D0', borderRadius: 10, overflow: 'hidden', marginRight: 10 }}>Hockey</Text>
+                            <Text style={{ padding: 10, backgroundColor: '#D0D0D0', borderRadius: 10, overflow: 'hidden', marginRight: 10 }}>Design</Text>
+                            <Text style={{ padding: 10, backgroundColor: '#D0D0D0', borderRadius: 10, overflow: 'hidden', marginRight: 10 }}>Fashion</Text>
+                        </View>
                     </View>
                 </View>
             </View>
