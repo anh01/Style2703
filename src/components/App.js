@@ -5,7 +5,7 @@ StatusBar.setHidden(true);
 
 class App extends Component {
     render() {
-        const { wrapper, footer, header, body, titleStyle, iconStyle, profileStyle, imageHolder } = styles;
+        const { wrapper, footer, header, body, titleStyle, iconStyle, profileStyle, imageHolder, imageContainer } = styles;
         return (
             <View style={wrapper}>
                 <View style={header}>
@@ -18,16 +18,16 @@ class App extends Component {
                     <Text style={{ fontSize: 20, color: '#fff' }}>Teacher</Text>
                     <Text style={{ fontSize: 20, color: '#235857' }}>Saigon, Vietnam</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignSelf: 'stretch' }}>
-                        <View style={{ backgroundColor: '#269174', height: 50, width: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={imageContainer}>
                             <Image source={require('../media/phone.png')} style={iconStyle} />
                         </View>
-                        <View style={{ backgroundColor: '#269174', height: 50, width: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={imageContainer}>
                             <Image source={require('../media/message.png')} style={iconStyle} />
                         </View>
-                        <View style={{ backgroundColor: '#269174', height: 50, width: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={imageContainer}>
                             <Image source={require('../media/mail.png')} style={iconStyle} />
                         </View>
-                        <View style={{ backgroundColor: '#269174', height: 50, width: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={imageContainer}>
                             <Image source={require('../media/like.png')} style={iconStyle} />
                         </View>
                     </View>
@@ -75,6 +75,14 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 50
+    },
+    imageContainer: { 
+        backgroundColor: '#269174', 
+        height: 50, 
+        width: 50, 
+        borderRadius: 25, 
+        justifyContent: 'center', 
+        alignItems: 'center' 
     }
 });
 
