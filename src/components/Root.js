@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, Navigator } from 'react-native';
+import { View, Text, Navigator, TouchableOpacity } from 'react-native';
 
 class Root extends Component {
-    state = {  }
     render() {
         return (
             <Navigator 
-                initialRoute={{ name: 'C' }}
+                initialRoute={{ name: 'A' }}
                 renderScene={(route, navigator) => {
-                    if (route.name === 'A') return <TrangA />
+                    if (route.name === 'A') return <TrangA nav={navigator}/>
                     if (route.name === 'B') return <TrangB />
                     return <TrangC />
                 }}
@@ -21,9 +20,13 @@ export default Root;
 
 class TrangA extends Component {
     render() {
+        const { nav } =this.props;
         return (
             <View style={{ flex: 1, backgroundColor: '#DFF5C9' }}>
                 <Text>Trang A</Text>
+                <TouchableOpacity onPress={() => nav.push({ name: 'B' })}>
+                    <Text>Go to B</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -32,7 +35,7 @@ class TrangA extends Component {
 class TrangB extends Component {
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: '#DFF5C9' }}>
+            <View style={{ flex: 1, backgroundColor: '#F2F2F2' }}>
                 <Text>Trang B</Text>
             </View>
         );
