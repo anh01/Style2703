@@ -5,23 +5,31 @@ StatusBar.setHidden(true);
 
 class App extends Component {
     render() {
-        const { wrapper, footer, header, body, titleStyle, iconStyle, profileStyle } = styles;
+        const { wrapper, footer, header, body, titleStyle, iconStyle, profileStyle, imageHolder } = styles;
         return (
             <View style={wrapper}>
                 <View style={header}>
-                    <Image source={require('../media/4.png')} style={iconStyle} />
+                    <Image source={require('../media/back.png')} style={iconStyle} />
                     <Text style={titleStyle}>Nguyen Van Pho</Text>
-                    <Image source={require('../media/4.png')} style={iconStyle} />
+                    <Image source={require('../media/search.png')} style={iconStyle} />
                 </View>
                 <View style={body}>
                     <Image source={require('../media/profile.png')} style={profileStyle} />
                     <Text style={{ fontSize: 20, color: '#fff' }}>Teacher</Text>
                     <Text style={{ fontSize: 20, color: '#235857' }}>Saigon, Vietnam</Text>
-                    <View style={{ flexDirection: 'row' }}>
-                        <Image source={require('../media/4.png')} style={{ backgroundColor: '#248E6F' }} />
-                        <Image source={require('../media/4.png')} style={iconStyle} />
-                        <Image source={require('../media/4.png')} style={iconStyle} />
-                        <Image source={require('../media/4.png')} style={iconStyle} />
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignSelf: 'stretch' }}>
+                        <View style={{ backgroundColor: '#269174', height: 50, width: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                            <Image source={require('../media/phone.png')} style={iconStyle} />
+                        </View>
+                        <View style={{ backgroundColor: '#269174', height: 50, width: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                            <Image source={require('../media/message.png')} style={iconStyle} />
+                        </View>
+                        <View style={{ backgroundColor: '#269174', height: 50, width: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                            <Image source={require('../media/mail.png')} style={iconStyle} />
+                        </View>
+                        <View style={{ backgroundColor: '#269174', height: 50, width: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center' }}>
+                            <Image source={require('../media/like.png')} style={iconStyle} />
+                        </View>
                     </View>
                 </View>
                 <View style={footer}></View>
@@ -52,7 +60,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#FEFFFF'
     },
     titleStyle: {
-        color: 'white'
+        color: 'white',
+        fontFamily: 'Avenir',
+        fontSize: 25
+    },
+    imageHolder: {
+
     },
     iconStyle: {
         width: 30,
