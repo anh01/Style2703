@@ -6,7 +6,7 @@ StatusBar.setHidden(true);
 class Root extends Component {
     render() {
         return (
-            <Navigator 
+            <Navigator
                 initialRoute={{ name: 'A' }}
                 renderScene={(route, navigator) => {
                     if (route.name === 'A') return <TrangA nav={navigator} />;
@@ -20,7 +20,7 @@ class Root extends Component {
 
 export default Root;
 
-class TrangA extends Component {
+/*class TrangA extends Component {
     render() {
         const { nav } = this.props;
         return (
@@ -35,32 +35,34 @@ class TrangA extends Component {
             </View>
         );
     }
-}
+}*/
 
-class TrangB extends Component {
-    render() {
-        const { navigator } = this.props;
-        return (
-            <View style={{ flex: 1, backgroundColor: '#F2F2F2' }}>
-                <Text>Trang B</Text>
-                <TouchableOpacity onPress={() => navigator.pop()}>
-                    <Text>Go back to A</Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
-}
+const TrangA = (props) => (
+    <View style={{ flex: 1, backgroundColor: '#DFF5C9' }}>
+        <Text>Trang A</Text>
+        <TouchableOpacity onPress={() => props.nav.push({ name: 'B' })}>
+            <Text>Go to B</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => props.nav.push({ name: 'C' })}>
+            <Text>Go to C</Text>
+        </TouchableOpacity>
+    </View>
+);
 
-class TrangC extends Component {
-    render() {
-        const { navigator } = this.props;
-        return (
-            <View style={{ flex: 1, backgroundColor: '#DFF5C9' }}>
-                <Text>Trang C</Text>
-                <TouchableOpacity onPress={() => navigator.pop()}>
-                    <Text>Go back to A</Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
-}
+const TrangB = (props) => (
+    <View style={{ flex: 1, backgroundColor: '#F2F2F2' }}>
+        <Text>Trang B</Text>
+        <TouchableOpacity onPress={() => props.navigator.pop()}>
+            <Text>Go back to A</Text>
+        </TouchableOpacity>
+    </View>
+);
+
+const TrangC = (props) => (
+    <View style={{ flex: 1, backgroundColor: '#DFF5C9' }}>
+        <Text>Trang C</Text>
+        <TouchableOpacity onPress={() => props.navigator.pop()}>
+            <Text>Go back to A</Text>
+        </TouchableOpacity>
+    </View>
+);
