@@ -19,8 +19,8 @@ export default class Form extends Component {
                     placeholder="Enter number b"
                     onChangeText={text => this.setState({ soB: text })}
                 />
-                <TouchableOpacity onPress={() => console.log(this.state.soA, this.state.soB)}>
-                    <Text>Show the value</Text>
+                <TouchableOpacity onPress={() => this.props.navigator.push({ name: 'ADD' })}>
+                    <Text>Go to Add Component</Text>
                 </TouchableOpacity>
             </View>
         );
