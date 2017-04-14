@@ -13,6 +13,10 @@ class Root extends Component {
                     if (route.name === 'B') return <TrangB navigator={navigator} />;
                     return <TrangC navigator={navigator} />;
                 }}
+                configureScene={route => {
+                    if (route.name === 'B') return Navigator.SceneConfigs.PushFromRight;
+                    return Navigator.SceneConfigs.PushFromLeft;
+                }}
             />
         );
     }
@@ -59,7 +63,7 @@ const TrangB = (props) => (
 );
 
 const TrangC = (props) => (
-    <View style={{ flex: 1, backgroundColor: '#DFF5C9' }}>
+    <View style={{ flex: 1, backgroundColor: '#D5D5D5' }}>
         <Text>Trang C</Text>
         <TouchableOpacity onPress={() => props.navigator.pop()}>
             <Text>Go back to A</Text>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 // import App from './src/components/App';
-import Root from './src/components/Root';
+import Form from './src/components/Form';
 
 export default class StyleDemo extends Component {
   render() {
-    return <Root />;
+    return <Form />;
   }
 }
 
