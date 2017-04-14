@@ -11,7 +11,7 @@ export default class Nav extends Component {
                 initialRoute={{ name: 'FORM' }}
                 renderScene={(route, navigator) => {
                     if (route.name === 'FORM') return <Form navigator={navigator} />;
-                    return <Add soA={10} soB={20} navigator={navigator} />;
+                    return <Add soA={route.soA1} soB={route.soB} navigator={navigator} />;
                 }}
             />
         );
