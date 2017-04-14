@@ -12,12 +12,12 @@ export default class Form extends Component {
                 <TextInput
                     style={{ height: 30, backgroundColor: '#fff', margin: 10 }}
                     placeholder="Enter number a"
-                    onChangeText={text => this.setState({ soA: text, soB: this.state.soB })}
+                    onChangeText={text => this.setState({ soA: text })}
                 />
                 <TextInput
                     style={{ height: 30, backgroundColor: '#fff', margin: 10 }}
                     placeholder="Enter number b"
-                    onChangeText={text => this.setState({ soB: text, soA: this.state.soA })}
+                    onChangeText={text => this.setState({ soB: text })}
                 />
                 <TouchableOpacity onPress={() => console.log(this.state.soA, this.state.soB)}>
                     <Text>Show the value</Text>
