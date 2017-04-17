@@ -11,7 +11,7 @@ export default class List extends Component {
     render() {
         return (
             <View>
-                <Text>List Component</Text>
+                { this.state.mang.map((e, i) => <Note key={i} content={e} />) }
             </View>
         );
     }
