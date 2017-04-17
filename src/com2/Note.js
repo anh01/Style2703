@@ -3,11 +3,17 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 export default class Note extends Component {
+    // remove() {
+    //     const { parent, index } = this.props;
+    //     parent.state.mang.splice(index, 1);
+    //     parent.setState({ mang: parent.state.mang });
+    // }
+
     remove() {
-        const { parent, index } = this.props;
-        parent.state.mang.splice(index, 1);
-        parent.setState({ mang: parent.state.mang });
+        const { onRemove, index } = this.props;
+        onRemove(index);
     }
+
     render() {
         const { content } = this.props;
         return (

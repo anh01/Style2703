@@ -8,10 +8,16 @@ export default class List extends Component {
         super(props);
         this.state = { mang: ['Lam bai tap ve nha', 'Nop bao cao cuoi thang'] };
     }
+
+    remove(index) {
+        this.state.mang.splice(index, 1);
+        this.setState({ mang: this.state.mang });
+    }
+
     render() {
         return (
             <View>
-                { this.state.mang.map((e, i) => <Note key={i} content={e} parent={this} index={i} />) }
+                { this.state.mang.map((e, i) => <Note key={i} content={e} onRemove={this.remove.bind(this)} index={i} />) }
             </View>
         );
     }
