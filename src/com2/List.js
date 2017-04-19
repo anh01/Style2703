@@ -32,14 +32,6 @@ export default class List extends Component {
         return (
             <View>
                 { this.state.mang.map((e, i) => <Note key={i} content={e} onRemove={this.remove.bind(this)} index={i} />) }
-                <TextInput 
-                    style={{ height: 50, backgroundColor: '#fff' }} 
-                    onChangeText={text => this.setState({ text })}
-                    value={this.state.text}
-                />
-                <TouchableOpacity onPress={this.addNote.bind(this)}>
-                    <Text>Add</Text>
-                </TouchableOpacity>
                 <Form handleAdd={this.addNoteFromForm.bind(this)} />
             </View>
         );
