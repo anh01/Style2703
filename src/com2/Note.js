@@ -1,13 +1,12 @@
 //props -> content, button -> xoa class Component
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 
 export default class Note extends Component {
-    // remove() {
-    //     const { parent, index } = this.props;
-    //     parent.state.mang.splice(index, 1);
-    //     parent.setState({ mang: parent.state.mang });
-    // }
+    constructor(props) {
+        super(props);
+        this.state = { isUpdating: false };
+    }
 
     remove() {
         const { onRemove, index } = this.props;
@@ -16,15 +15,25 @@ export default class Note extends Component {
 
     render() {
         const { content } = this.props;
-        const { container, button } =styles;
+        const { isUpdating } = this.state;
+        const { container, button, input } = styles;
+
+        const inputJSX = (
+            <TextInput style={input} value={content} />
+        );
+
+        const textJSX = <Text style={{ color: '#473076' }}>{ content }</Text>;
+
+        const mainJSX = isUpdating ? inputJSX : textJSX;
+
         return (
             <View style={container}>
-                <Text style={{ color: '#473076' }}>{ content }</Text>
+                { mainJSX }
                 <View style={{ flexDirection: 'row' }}>
                     <TouchableOpacity style={button} onPress={this.remove.bind(this)}>
                         <Text style={{ color: '#fff' }}>Xoa</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={button} onPress={this.remove.bind(this)}>
+                    <TouchableOpacity style={button} onPress={() => this.setState({ isUpdating: !isUpdating })}>
                         <Text style={{ color: '#fff' }}>Sua</Text>
                     </TouchableOpacity>
                 </View>
@@ -35,5 +44,6 @@ export default class Note extends Component {
 
 const styles = StyleSheet.create({
     container: { height: 100, backgroundColor: '#CFE2BC', margin: 10, padding: 10, justifyContent: 'space-between' },
-    button:  { backgroundColor: '#5B4287', flex: 1, marginHorizontal: 10, alignItems: 'center', padding: 10, borderRadius: 5 }
+    button: { backgroundColor: '#5B4287', flex: 1, marginHorizontal: 10, alignItems: 'center', padding: 10, borderRadius: 5 },
+    input: { height: 30, backgroundColor: '#fff', width: 350, alignSelf: 'center', paddingLeft: 10 }
 });
