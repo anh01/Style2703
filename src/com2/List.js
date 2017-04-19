@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import Note from './Note';
-// import Form from './Form';
+import Form from './Form';
 
 export default class List extends Component {
     constructor(props) {
@@ -23,6 +23,11 @@ export default class List extends Component {
         this.setState({ mang: mang.concat(text), text: '' });
     }
 
+    addNoteFromForm(text) {
+        const { mang } = this.state;
+        this.setState({ mang: mang.concat(text) });
+    }
+
     render() {
         return (
             <View>
@@ -35,6 +40,7 @@ export default class List extends Component {
                 <TouchableOpacity onPress={this.addNote.bind(this)}>
                     <Text>Add</Text>
                 </TouchableOpacity>
+                <Form handleAdd={this.addNoteFromForm.bind(this)} />
             </View>
         );
     }
