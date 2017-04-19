@@ -12,6 +12,7 @@ class Form extends Component {
         const { text } = this.state;
         const { handleAdd } = this.props;
         handleAdd(text);
+        this.setState({ text: '' });
     }
 
     render() {
@@ -20,6 +21,7 @@ class Form extends Component {
                 <TextInput 
                     style={{ height: 50, backgroundColor: '#fff' }} 
                     onChangeText={text => this.setState({ text })}
+                    value={this.state.text} 
                 />
                 <TouchableOpacity onPress={this.addNote.bind(this)}>
                     <Text>Add</Text>
