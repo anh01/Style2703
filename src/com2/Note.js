@@ -22,21 +22,36 @@ export default class Note extends Component {
             <TextInput style={input} value={content} />
         );
 
-        const textJSX = <Text style={{ color: '#473076' }}>{ content }</Text>;
+        const textJSX = <Text style={{ color: '#473076' }}>{content}</Text>;
+
+        const controllUpdate = (
+            <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity style={button} onPress={this.remove.bind(this)}>
+                    <Text style={{ color: '#fff' }}>Luu</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={button} onPress={() => this.setState({ isUpdating: !isUpdating })}>
+                    <Text style={{ color: '#fff' }}>Huy</Text>
+                </TouchableOpacity>
+            </View>
+        );
+
+        const controllView = (
+            <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity style={button} onPress={this.remove.bind(this)}>
+                    <Text style={{ color: '#fff' }}>Xoa</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={button} onPress={() => this.setState({ isUpdating: !isUpdating })}>
+                    <Text style={{ color: '#fff' }}>Sua</Text>
+                </TouchableOpacity>
+            </View>
+        );
 
         const mainJSX = isUpdating ? inputJSX : textJSX;
-
+        const controllJSX = isUpdating ? controllUpdate : controllView;
         return (
             <View style={container}>
-                { mainJSX }
-                <View style={{ flexDirection: 'row' }}>
-                    <TouchableOpacity style={button} onPress={this.remove.bind(this)}>
-                        <Text style={{ color: '#fff' }}>Xoa</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={button} onPress={() => this.setState({ isUpdating: !isUpdating })}>
-                        <Text style={{ color: '#fff' }}>Sua</Text>
-                    </TouchableOpacity>
-                </View>
+                {mainJSX}
+                {controllJSX}
             </View>
         );
     }
