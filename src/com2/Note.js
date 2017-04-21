@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Control from './Control';
+import ControlView from './ControlView';
 
 export default class Note extends Component {
     constructor(props) {
@@ -28,10 +29,14 @@ export default class Note extends Component {
         this.setState({ isUpdating: false });
     }
 
+    update() {
+        this.setState({ isUpdating: true });
+    }
+
     render() {
         const { content } = this.props;
         const { isUpdating } = this.state;
-        const { container, button, input } = styles;
+        const { container, input } = styles;
 
         const inputJSX = (
             <TextInput 
@@ -43,19 +48,10 @@ export default class Note extends Component {
 
         const textJSX = <Text style={{ color: '#473076' }}>{content}</Text>;
 
-        const controllView = (
-            <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={button} onPress={this.remove.bind(this)}>
-                    <Text style={{ color: '#fff' }}>Xoa</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={button} onPress={() => this.setState({ isUpdating: !isUpdating })}>
-                    <Text style={{ color: '#fff' }}>Sua</Text>
-                </TouchableOpacity>
-            </View>
-        );
-
         const mainJSX = isUpdating ? inputJSX : textJSX;
-        const controllJSX = isUpdating ? <Control onCancel={this.cancel.bind(this)} /> : controllView;
+        const controllJSX = isUpdating ? 
+        <Control onCancel={this.cancel.bind(this)} onSave={this.save.bind(this)} /> 
+        : <ControlView onRemove={this.remove.bind(this)} onUpdate={this.update.bind(this)} />;
         return (
             <View style={container}>
                 {mainJSX}

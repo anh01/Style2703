@@ -1,6 +1,6 @@
 //state: mang ['Lam bai tap ve nha', 'Nop bao cao cuoi thang]
 import React, { Component } from 'react';
-import { View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { View } from 'react-native';
 import Note from './Note';
 import Form from './Form';
 

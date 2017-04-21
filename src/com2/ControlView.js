@@ -14,13 +14,13 @@ export default class Control extends Component {
     render() {
         return (
             <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={button} onPress={this.props.onSave}>
-                    <Text style={{ color: '#fff' }}>Luu</Text>
+                <TouchableOpacity style={button} onPress={this.props.onRemove}>
+                    <Text style={{ color: '#fff' }}>Xoa</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={button} onPress={this.props.onCancel} >
-                    <Text style={{ color: '#fff' }}>Huy</Text>
+                <TouchableOpacity style={button} onPress={this.props.onUpdate}>
+                    <Text style={{ color: '#fff' }}>Sua</Text>
                 </TouchableOpacity>
-            </View>            
+            </View>          
         );
     }
 }
