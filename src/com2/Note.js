@@ -5,12 +5,22 @@ import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-nativ
 export default class Note extends Component {
     constructor(props) {
         super(props);
-        this.state = { isUpdating: false };
+        this.state = { 
+            isUpdating: false,
+            text: this.props.content
+        };
     }
 
     remove() {
         const { onRemove, index } = this.props;
         onRemove(index);
+    }
+
+    save() {
+        const { onSave, index } = this.props;
+        const { text } = this.state;
+        onSave(index, text);
+        this.setState({ isUpdating: false });
     }
 
     render() {
@@ -19,14 +29,18 @@ export default class Note extends Component {
         const { container, button, input } = styles;
 
         const inputJSX = (
-            <TextInput style={input} value={content} />
+            <TextInput 
+                style={input} 
+                value={this.state.text} 
+                onChangeText={text => this.setState({ text })}
+            />
         );
 
         const textJSX = <Text style={{ color: '#473076' }}>{content}</Text>;
 
         const controllUpdate = (
             <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={button} onPress={this.remove.bind(this)}>
+                <TouchableOpacity style={button} onPress={this.save.bind(this)}>
                     <Text style={{ color: '#fff' }}>Luu</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={button} onPress={() => this.setState({ isUpdating: !isUpdating })}>

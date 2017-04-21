@@ -18,6 +18,11 @@ export default class List extends Component {
         this.setState({ mang: this.state.mang });
     }
 
+    save(index, text) {
+        this.state.mang[index] = text;
+        this.setState(this.state);
+    }
+
     addNote() {
         const { text, mang } = this.state;
         this.setState({ mang: mang.concat(text), text: '' });
@@ -31,7 +36,15 @@ export default class List extends Component {
     render() {
         return (
             <View>
-                { this.state.mang.map((e, i) => <Note key={i} content={e} onRemove={this.remove.bind(this)} index={i} />) }
+                { this.state.mang.map((e, i) => (
+                    <Note 
+                        key={i} 
+                        content={e} 
+                        onRemove={this.remove.bind(this)} 
+                        onSave={this.save.bind(this)} 
+                        index={i} 
+                    />
+                )) }
                 <Form handleAdd={this.addNoteFromForm.bind(this)} />
             </View>
         );
