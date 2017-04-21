@@ -11,14 +11,14 @@ const button = {
 };
 
 
-export default class Controll extends Component {
+export default class Control extends Component {
     render() {
         return (
             <View style={{ flexDirection: 'row' }}>
                 <TouchableOpacity style={button}>
                     <Text style={{ color: '#fff' }}>Luu</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={button}>
+                <TouchableOpacity style={button} onPress={this.props.onCancel} >
                     <Text style={{ color: '#fff' }}>Huy</Text>
                 </TouchableOpacity>
             </View>            

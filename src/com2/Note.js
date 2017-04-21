@@ -1,7 +1,7 @@
 //props -> content, button -> xoa class Component
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
-import Controll from './Controll';
+import Control from './Control';
 
 export default class Note extends Component {
     constructor(props) {
@@ -10,6 +10,10 @@ export default class Note extends Component {
             isUpdating: false,
             text: this.props.content
         };
+    }
+
+    cancel() {
+        this.setState({ isUpdating: false });
     }
 
     remove() {
@@ -51,7 +55,7 @@ export default class Note extends Component {
         );
 
         const mainJSX = isUpdating ? inputJSX : textJSX;
-        const controllJSX = isUpdating ? <Controll /> : controllView;
+        const controllJSX = isUpdating ? <Control onCancel={this.cancel.bind(this)} /> : controllView;
         return (
             <View style={container}>
                 {mainJSX}
